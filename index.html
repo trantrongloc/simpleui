@@ -1,34 +1,84 @@
 <html>
-  <head>
-    <title>Simple UI by Loc Tran</title>
-  </head>
-  <body>
-    <div class='feature'>
-      <h1>Search</h1>
-      <ol>
-        <li>Instant hint while typing</li>
-        <li>Result quick look as hover</li>
-        <li>Navigate through keyboard and gesture</li>
-        <li>Infinity paging navigation</li>
-      </ol>
-    </div>
-    <div class='feature'>
-      <h1>Gallery</h1>
-      <ol>
-        <li>Horizontal scrollable thumbnail list</li>
-        <li>Fullscreen cinema preview</li>
-        <li>Zoom, rotate, flip using gestures and keyboard</li>
-        <li>Basic filter, crop and effects</li>
-      </ol>
-    </div>
-    <div class='feature'>
-      <h1>Tree</h1>
-      <ol>
-        <li>Search and highlight multiple level</li>
-        <li>Editable, change parent visually</li>
-        <li>Vertical and horizontal view with auto layout</li>
-        <li>Auto expand and focus on navigation</li>
-      </ol>
-    </div>
-  </body>
+    <head>
+        <title>Simple UI by Loc Tran</title>
+        <style>
+            .app{
+                width: 424px;
+                height: 317px;
+                overflow: hidden;
+                display:inline-block;
+                color:white;
+                font-family: 'Comic Sans MS';
+                text-align: center;
+                position: relative;
+            }
+            .app-title{
+                font-size: larger;
+                font-weight: bolder;
+            }
+            .app-calendar {
+                background-color:burlywood;
+            }
+            .app-calculator {
+                background-color:peru;
+                
+            }
+            .app-todo {
+                background-color:orange;
+                
+            }
+            .app-gallery {
+                background-color:lawngreen;
+                
+            }
+            .app-news {
+                background-color:red;
+                
+            }
+            .app-sketch {
+                background-color:teal;
+                
+            }
+            
+            /* This to disable bounch scroll on iOS and macOS*/
+            html, body {
+                top: 0;
+                left: 0;
+                height: 100%;
+                overflow: hidden;
+            }
+
+            #dashboard {
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                overflow: auto;
+            }
+        </style>
+    </head>
+    <body>
+        <div id='dashboard'>
+            <div class='app app-calendar'>
+                <div class='app-title'>Clock and Calendar</div>
+                <div class='app-body'>
+                    <p>12:00:00</p>
+                    <p>Sunday, 14 June 2020</p>
+                </div>
+            </div>
+            <div class='app app-calculator'>
+                <div class='app-title'>Calculator</div>
+                <div class='app-body'>
+                    <p>Mile to Kilometer</p>
+                    <p>EUR to USD</p>
+                    <p>Loan estimation</p>
+                </div>
+            </div>
+            <div class='app app-todo'>Todo and Reminder</div>
+            <div class='app app-gallery'>Files Gallery</div>
+            <div class='app app-sketch'>Sketch</div>
+            <div class='app app-news'>News</div>
+        </div>
+    </body>
 </html>
