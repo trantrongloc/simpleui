@@ -9,8 +9,8 @@
                 display:inline-block;
                 color:white;
                 font-family: 'Comic Sans MS';
-                text-align: center;
                 position: relative;
+                text-align: center;
             }
             .app-title{
                 font-size: larger;
@@ -56,6 +56,40 @@
                 right: 0;
                 overflow: auto;
             }
+
+            /* Css for Calendar app */
+            .weekdays {
+                margin: 0;
+                padding: 5px 0;
+            }
+
+            .weekdays li {
+                display: inline-block;
+                width: 11.6%;
+                color: #777;
+                text-align: center;
+            }
+
+            .days {
+                padding: 10px 0;
+                margin: 0;
+            }
+
+            .days li {
+                list-style-type: none;
+                display: inline-block;
+                width: 11.6%;
+                text-align: center;
+                margin-bottom: 5px;
+                font-size:12px;
+                color: #777;
+            }
+
+            .days li .active {
+                padding: 5px;
+                background: #777;
+                color: white !important
+            }
         </style>
     </head>
     <body>
@@ -65,6 +99,56 @@
                 <div class='app-body'>
                     <p>12:00:00</p>
                     <p>Sunday, 14 June 2020</p>
+                    <div class='this-month'>
+                        <ul class="weekdays">
+                            <li>Mon</li>
+                            <li>Tue</li>
+                            <li>Wed</li>
+                            <li>Thu</li>
+                            <li>Fri</li>
+                            <li>Sat</li>
+                            <li>Sun</li>
+                          </ul>
+                          
+                          <ul class="days">  
+                            <li>1</li>
+                            <li>2</li>
+                            <li>3</li>
+                            <li>4</li>
+                            <li>5</li>
+                            <li>6</li>
+                            <li>7</li>
+                            <li>8</li>
+                            <li>9</li>
+                            <li>10</li>
+                            <li>11</li>
+                            <li>12</li>
+                            <li>13</li>
+                            <li><span class="active">14</span></li>
+                            <li>15</li>
+                            <li>16</li>
+                            <li>17</li>
+                            <li>18</li>
+                            <li>19</li>
+                            <li>20</li>
+                            <li>21</li>
+                            <li>22</li>
+                            <li>23</li>
+                            <li>24</li>
+                            <li>25</li>
+                            <li>26</li>
+                            <li>27</li>
+                            <li>28</li>
+                            <li>29</li>
+                            <li>30</li>
+                            <li>31</li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                          </ul>
+                          
+                    </div>
                 </div>
             </div>
             <div class='app app-calculator'>
@@ -72,7 +156,8 @@
                 <div class='app-body'>
                     <p>Mile to Kilometer</p>
                     <p>EUR to USD</p>
-                    <p>Loan estimation</p>
+                    <p>Loan interest</p>
+                    <p>Bar chart, Pie chart</p>
                 </div>
             </div>
             <div class='app app-todo'>Todo and Reminder</div>
