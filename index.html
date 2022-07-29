@@ -1,169 +1,81 @@
 <html>
-    <head>
-        <title>Simple UI by Loc Tran</title>
-        <style>
-            .app{
-                width: 424px;
-                height: 317px;
-                overflow: hidden;
-                display:inline-block;
-                color:white;
-                font-family: 'Comic Sans MS';
-                position: relative;
-                text-align: center;
-            }
-            .app-title{
-                font-size: larger;
-                font-weight: bolder;
-            }
-            .app-calendar {
-                background-color:burlywood;
-            }
-            .app-calculator {
-                background-color:peru;
-                
-            }
-            .app-todo {
-                background-color:orange;
-                
-            }
-            .app-gallery {
-                background-color:lawngreen;
-                
-            }
-            .app-news {
-                background-color:red;
-                
-            }
-            .app-sketch {
-                background-color:teal;
-                
-            }
-            
-            /* This to disable bounch scroll on iOS and macOS*/
-            html, body {
-                top: 0;
-                left: 0;
-                height: 100%;
-                overflow: hidden;
-            }
 
-            #dashboard {
-                position: absolute;
-                top: 0;
-                bottom: 0;
-                left: 0;
-                right: 0;
-                overflow: auto;
-            }
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <style>
+        body {
+            font-size: 26px;
+            padding: 0;
+            margin: 0;
+            font-family: 'Comic Sans MS';
+        }
+        .top-bar {
+            position: fixed;
+            padding: 0;
+            top: 0;
+            width: 100%;
+            margin: 0;
+            height: 64px;
+            background-color: whitesmoke;
+            opacity: 0.95;
+        }
+        .todo-list ul {
+            list-style-type: none;
+            padding: 0;
+            margin-top: 74px;
+            margin-bottom: 74px;
+        }
+        .todo-list li {
+            height: 64px;
+            border: 0.5px solid gray;
+            border-radius: 10px;
+        }
+        .bottom-bar {
+            position: fixed;
+            padding: 0;
+            bottom: 0;
+            width: 100%;
+            margin: 0;
+            height: 64px;
+        }
+        .bottom-bar input {
+            width: 100%;
+            height: 100%;
+            font-size: 32px;
+            border: 1px solid;
+            border-radius: 100px;
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+</head>
 
-            /* Css for Calendar app */
-            .weekdays {
-                margin: 0;
-                padding: 5px 0;
-            }
-
-            .weekdays li {
-                display: inline-block;
-                width: 11.6%;
-                color: #777;
-                text-align: center;
-            }
-
-            .days {
-                padding: 10px 0;
-                margin: 0;
-            }
-
-            .days li {
-                list-style-type: none;
-                display: inline-block;
-                width: 11.6%;
-                text-align: center;
-                margin-bottom: 5px;
-                font-size:12px;
-                color: #777;
-            }
-
-            .days li .active {
-                padding: 5px;
-                background: #777;
-                color: white !important
-            }
-        </style>
-    </head>
-    <body>
-        <div id='dashboard'>
-            <div class='app app-calendar'>
-                <div class='app-title'>Clock and Calendar</div>
-                <div class='app-body'>
-                    <p>12:00:00</p>
-                    <p>Sunday, 14 June 2020</p>
-                    <div class='this-month'>
-                        <ul class="weekdays">
-                            <li>Mon</li>
-                            <li>Tue</li>
-                            <li>Wed</li>
-                            <li>Thu</li>
-                            <li>Fri</li>
-                            <li>Sat</li>
-                            <li>Sun</li>
-                          </ul>
-                          
-                          <ul class="days">  
-                            <li>1</li>
-                            <li>2</li>
-                            <li>3</li>
-                            <li>4</li>
-                            <li>5</li>
-                            <li>6</li>
-                            <li>7</li>
-                            <li>8</li>
-                            <li>9</li>
-                            <li>10</li>
-                            <li>11</li>
-                            <li>12</li>
-                            <li>13</li>
-                            <li><span class="active">14</span></li>
-                            <li>15</li>
-                            <li>16</li>
-                            <li>17</li>
-                            <li>18</li>
-                            <li>19</li>
-                            <li>20</li>
-                            <li>21</li>
-                            <li>22</li>
-                            <li>23</li>
-                            <li>24</li>
-                            <li>25</li>
-                            <li>26</li>
-                            <li>27</li>
-                            <li>28</li>
-                            <li>29</li>
-                            <li>30</li>
-                            <li>31</li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                          </ul>
-                          
-                    </div>
-                </div>
-            </div>
-            <div class='app app-calculator'>
-                <div class='app-title'>Calculator</div>
-                <div class='app-body'>
-                    <p>Mile to Kilometer</p>
-                    <p>EUR to USD</p>
-                    <p>Loan interest</p>
-                    <p>Bar chart, Pie chart</p>
-                </div>
-            </div>
-            <div class='app app-todo'>Todo and Reminder</div>
-            <div class='app app-gallery'>Files Gallery</div>
-            <div class='app app-sketch'>Sketch</div>
-            <div class='app app-news'>News</div>
-        </div>
-    </body>
+<body>
+    <section class="top-bar"><h4>Today's list (14/20 done)</h4></section>
+    <section class="todo-list">
+        <ul>
+            <li>Task #01</li>
+            <li>Task #02</li>
+            <li>Task #03</li>
+            <li>Task #04</li>
+            <li>Task #05</li>
+            <li>Task #06</li>
+            <li>Task #07</li>
+            <li>Task #08</li>
+            <li>Task #09</li>
+            <li>Task #10</li>
+            <li>Task #11</li>
+            <li>Task #12</li>
+            <li>Task #13</li>
+            <li>Task #14</li>
+            <li>Task #15</li>
+            <li>Task #16</li>
+            <li>Task #17</li>
+            <li>Task #18</li>
+            <li>Task #19</li>
+            <li>Task #20</li>
+        </ul>
+    </section>
+    <section class="bottom-bar"><input placeholder="What to do next?"></section>
+</body>
 </html>
