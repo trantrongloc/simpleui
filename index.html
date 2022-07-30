@@ -12,7 +12,7 @@
                 width: 100%;
                 text-align: center;
                 background-color: whitesmoke;
-                height: 48px;
+                height: 40px;
             }
             section.top p {
                 font-size: 1.8em;
@@ -36,6 +36,8 @@
             section.list ul{
                 list-style: none;
                 padding: 0;
+                width: 375px;
+            	overflow: hidden;
             }
             section.bottom input {
                 width: 100%;
@@ -43,6 +45,18 @@
             li.element {
                 padding: 5px 0;
                 border-top: 1px solid gray;
+
+                scroll-snap-type: x mandatory;
+                display: flex;
+                overflow-x: auto;
+                scrollbar-width: none;
+            	cursor: grab;
+            }
+            li.element::-webkit-scrollbar {
+                display: none;
+            }
+            li.element div {
+                flex: 2 0 100%;
             }
             p.title {
                 font-size: 1.2em;
@@ -71,9 +85,29 @@
         for (var i = 0; i < 40; i++){
             var title = `<p class="title">Lorem ipsum dolor sit amet. #${i+1}</p>`;
             var subtitle = `<p class="subtitle">Quisque tortor ipsum, ornare eget velit vitae, vestibulum tempor purus. Cras lorem nisl, interdum fringilla quam quis, hendrerit iaculis ipsum.</p>`
-            list.push(`<li class="element">${title}${subtitle}</li>`);
+            var button = `<button>Delete</button>`;
+            list.push(`<li class="element"><div>${title}${subtitle}</div>${button}</li>`);
         }
         var render = list.join("");
         document.getElementById("todo").innerHTML = render;
+    </script>
+    <script>
+        document.querySelector("ul").addEventListener("click", (e) => {
+        const li = e.target.closest("li");
+        const btn = e.target.closest("button");
+        if (li && li.scrollLeft === 0) {
+            li.scrollBy({
+            left: 1,
+            behavior: "smooth"
+            });
+        } else if (!btn && li) {
+            li.scrollBy({
+            left: -1,
+            behavior: "smooth"
+            });
+        } else if (btn && li) {
+            li.remove();
+        }
+        });        
     </script>
 </html>
