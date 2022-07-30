@@ -67,32 +67,75 @@
                 font-size: 0.8em;
                 margin: 0;
             }
+            #detailheader {
+                overflow: hidden;
+                height: 100%;
+            }
+            section.detailview {
+                position: fixed;
+                width: 100%;
+                height: 100%;
+                display: none;
+            }
+            button.close {
+                position: fixed;
+                bottom: 0;
+                right: 0;
+                height: 64px;
+                width: 64px;
+            }
+            section#content {
+                margin-top: 72px;
+            }
         </style>
     </head>
     <body>
-        <section class="list">
-            <ul id="todo">
-            </ul>
+        <section class="listview">
+            <section class="list">
+                <ul id="todo">
+                </ul>
+            </section>
+            <section class="top">
+                <p>Name of the list</p>
+            </section>
+            <section class="bottom">
+                <input type="text" placeholder="What are you going to do today?">
+            </section>
         </section>
-        <section class="top">
-            <p>Name of the list</p>
-        </section>
-        <section class="bottom">
-            <input type="text" placeholder="What are you going to do today?">
+        <section class="detailview">
+            <section class="top">
+                <p id="detailheader">Header</p>
+            </section>
+            <section id="content"></section>
+            <button class="close">Close</button>
         </section>
     </body>
     <script type="text/javascript">
+        var data = [
+            {title: "Cras nec nisi id lacus luctus scelerisque vitae nec nisl", subtitle: "Morbi fermentum auctor consequat. Pellentesque et congue purus. Pellentesque nec volutpat sem. Morbi ipsum est, blandit et diam quis, malesuada accumsan eros. Nullam auctor dignissim enim vel pharetra. Nullam quis mi vel quam sodales ultricies. Phasellus tincidunt, erat vel dictum feugiat, nibh nisl consequat turpis, nec porta tellus nibh nec elit. Ut eleifend lacinia ullamcorper. Donec urna lorem, tincidunt rhoncus ullamcorper quis, egestas quis velit."},
+            {title: "Maecenas erat diam, posuere sed malesuada eu, laoreet vestibulum dui", subtitle: " Aenean non justo ac lectus placerat pulvinar. Vivamus semper nisl a lacus laoreet fringilla. Nunc malesuada turpis tincidunt justo convallis blandit. In bibendum quam vitae erat ultricies euismod. Pellentesque ultricies orci in odio molestie dapibus. Aenean mi nulla, accumsan non sapien ut, egestas vehicula est. Pellentesque nisi nunc, malesuada eget velit at, interdum imperdiet metus."},
+            {title: "Curabitur scelerisque odio et neque molestie dapibus lobortis vitae nibh", subtitle: " Duis vel lectus aliquam purus euismod efficitur non at diam. Aenean augue enim, rutrum ut aliquam ultrices, imperdiet ut turpis. Morbi nec nunc eget est bibendum pretium. Curabitur sit amet tortor elit. Donec tempus magna nulla. Cras lobortis enim a efficitur suscipit. Nulla vehicula nec lorem in mollis. Mauris tincidunt orci non sagittis dictum. Nulla non venenatis nibh. Aliquam sollicitudin eros augue, sit amet blandit diam faucibus quis. Sed a nulla elementum, placerat enim quis, dictum sapien. Aliquam tempor mattis cursus. Aenean aliquet semper tincidunt. Fusce risus nulla, dictum id elementum ut, congue in tortor."},
+            {title: "Aenean fermentum aliquet quam ut fermentum.", subtitle: "Morbi et mattis purus. Donec porta placerat nulla id varius. Suspendisse varius eros justo, ac luctus massa sodales et. Mauris ac volutpat ipsum. Proin id lobortis mi. Nunc metus urna, hendrerit scelerisque egestas vitae, elementum vitae mi. Mauris risus justo, rutrum ut hendrerit ac, malesuada eget lacus. Aenean in elit non augue ultrices interdum sed at libero."},
+            {title: "Ut at nibh et est eleifend scelerisque eu non lorem", subtitle: "In egestas sodales ultricies. Curabitur lobortis, ligula non cursus porta, enim odio tempor erat, non ornare est diam id eros. Curabitur at ante est. Phasellus viverra dui ultricies nunc tincidunt, sit amet pharetra sapien sodales. Proin vitae dapibus nisl. Curabitur iaculis consequat tempor. Mauris sagittis justo ut nisi bibendum dignissim. Sed pulvinar eros ut nibh pretium, eget aliquam justo mollis. Quisque pharetra nulla ut magna elementum facilisis."},
+            {title: "Ut nec vehicula ante", subtitle: "Vestibulum elit arcu, auctor vitae suscipit et, luctus ut felis. Suspendisse eget lobortis dolor. Fusce ullamcorper lobortis est eget ornare. Duis bibendum semper erat, quis ultricies felis mollis sed. Praesent laoreet odio a auctor eleifend. In tortor orci, suscipit a commodo at, blandit eu neque. Suspendisse potenti. Quisque congue convallis orci sit amet ultrices. Ut tincidunt, magna quis tincidunt dictum, risus justo mattis ipsum, et aliquam diam augue vitae sem. Quisque porta enim a tempus imperdiet."},
+            {title: "Aenean at enim et augue volutpat venenatis.", subtitle: " Morbi aliquet massa turpis, at placerat magna eleifend non. Nam eget enim eget neque consequat egestas condimentum in est. Sed vel magna ac odio placerat mattis. Fusce euismod diam ante, in bibendum lorem ultrices sed. Maecenas commodo ipsum dolor, viverra tincidunt eros viverra in. Aenean non volutpat metus. Duis eget lacus metus. Maecenas et eros sed ligula tincidunt tristique. Quisque sit amet pellentesque arcu, a porta justo."},
+            {title: "Ut rutrum eros a nisl vulputate, non pharetra purus scelerisque", subtitle: "Morbi vitae faucibus ipsum, et cursus quam. Aliquam erat volutpat. Mauris dapibus nibh justo, quis sodales eros mattis non. Praesent sit amet libero malesuada, euismod quam at, commodo augue. Curabitur commodo dignissim odio. Morbi turpis sapien, tristique sed nisi ac, mattis semper elit. Quisque ac leo est."},
+            {title: "Donec elit risus, porta sed lorem at, luctus egestas odio", subtitle: "Sed vel lectus mattis, faucibus leo vitae, aliquam eros. Aliquam nisl nisi, faucibus at luctus nec, imperdiet vel tellus. Maecenas suscipit imperdiet molestie. Cras luctus, dolor at bibendum laoreet, lectus massa scelerisque augue, ut sagittis nisi odio sed velit. Nam quis pharetra ex, quis malesuada dolor. Curabitur volutpat, dui at molestie congue, justo quam varius nunc, in accumsan elit magna ut dui. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Suspendisse vel ultricies libero. Suspendisse mauris massa, lacinia vel aliquet vitae, pulvinar non lectus. Praesent ac nibh quis magna fermentum congue vel vel dolor."},
+            {title: "Donec pharetra mi eget odio egestas sollicitudin", subtitle: "Praesent vestibulum elit eget purus commodo rhoncus. Nullam euismod, massa pharetra feugiat venenatis, ex justo blandit erat, nec congue purus enim id enim. Quisque dictum id quam et lacinia. Cras a suscipit odio. Donec accumsan sapien vel sem placerat faucibus et a dui. Quisque orci sem, interdum nec odio sed, porta tincidunt dolor. Aenean posuere turpis condimentum viverra consequat. Quisque varius faucibus porttitor."}
+        ];
         var list = [];
-        for (var i = 0; i < 40; i++){
-            var title = `<p class="title">Lorem ipsum dolor sit amet. #${i+1}</p>`;
-            var subtitle = `<p class="subtitle">Quisque tortor ipsum, ornare eget velit vitae, vestibulum tempor purus. Cras lorem nisl, interdum fringilla quam quis, hendrerit iaculis ipsum.</p>`
+        for (var i = 0; i < 10; i++){
+            var title = `<p class="title">${data[i].title}</p>`;
+            var subtitle = `<p class="subtitle">${data[i].subtitle.substring(0,100)}</p>`
             var button = `<button>Delete</button>`;
-            list.push(`<li class="element"><div>${title}${subtitle}</div>${button}</li>`);
+            list.push(`<li class="element" data-id="${i}"><div>${title}${subtitle}</div>${button}</li>`);
         }
         var render = list.join("");
         document.getElementById("todo").innerHTML = render;
     </script>
     <script type="text/javascript">
+        // For swipe event
+        /*
         document.querySelector("ul").addEventListener("click", (e) => {
         const li = e.target.closest("li");
         const btn = e.target.closest("button");
@@ -109,6 +152,20 @@
         } else if (btn && li) {
             li.remove();
         }
-        });        
+        });     */   
+    </script>
+    <script>
+        document.querySelector("ul").addEventListener("click", (e) => {
+            document.getElementsByClassName('listview')[0].style.display = 'none';
+            document.getElementsByClassName('detailview')[0].style.display = 'block';
+            var element = e.target.closest('li');
+            var id = element.dataset.id
+            document.getElementById('detailheader').innerHTML = data[id].title;
+            document.getElementById('content').innerHTML = data[id].subtitle;
+        }); 
+        document.getElementsByClassName("close")[0].addEventListener("click", (e) => {
+            document.getElementsByClassName('listview')[0].style.display = 'block';
+            document.getElementsByClassName('detailview')[0].style.display = 'none';
+        }); 
     </script>
 </html>
